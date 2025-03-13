@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <title>AI Agent Freelancers</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+  
   <!-- Google font: Roboto (free to use) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet" />
@@ -31,11 +35,14 @@
       text-decoration: none;
       color: inherit;
     }
+
+    /* Container for general content width */
     .container {
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 1rem;
     }
+
     /* ============ Header / Hero Section ============ */
     header {
       background: linear-gradient(120deg, #2e82ff, #645bff);
@@ -68,6 +75,7 @@
     .cta-button:hover {
       background: #dce8fa;
     }
+
     /* ============ Section Titles ============ */
     h2.section-title {
       font-weight: 700;
@@ -75,6 +83,7 @@
       font-size: 1.8rem;
       text-align: center;
     }
+
     /* ============ Freelancers Section ============ */
     .freelancers-section {
       margin-bottom: 2rem;
@@ -115,7 +124,8 @@
     .contact-btn:hover {
       background: #1b5fcc;
     }
-    /* ============ Listing / Payment Section ============ */
+
+    /* ============ Listing / Pay Section ============ */
     .listing-section {
       background: #fff;
       border-radius: 6px;
@@ -134,36 +144,37 @@
       margin-bottom: 1.5rem;
       line-height: 1.5;
     }
-    /* Formulár pre freelancerov */
-    .form-group {
-      margin-bottom: 1rem;
+
+    /* ======== Listing Form Styles ======== */
+    #listingForm {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
+    #listingForm label {
+      font-weight: 500;
     }
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 0.75rem;
+    #listingForm input,
+    #listingForm textarea {
+      padding: 0.8rem;
       border: 1px solid #ddd;
       border-radius: 4px;
+      font-size: 1rem;
     }
-    .submit-btn {
-      display: block;
-      width: 100%;
-      padding: 0.8rem;
+    #listingForm button {
       background: #2e82ff;
       color: #fff;
       border: none;
+      padding: 0.8rem;
       border-radius: 4px;
       font-size: 1rem;
       cursor: pointer;
       transition: 0.2s ease;
     }
-    .submit-btn:hover {
+    #listingForm button:hover {
       background: #1b5fcc;
     }
+
     /* ============ Footer ============ */
     footer {
       background: #fff;
@@ -173,6 +184,7 @@
       font-size: 0.9rem;
       color: #777;
     }
+
     @media (max-width: 600px) {
       header h1 {
         font-size: 2rem;
@@ -189,7 +201,8 @@
   <header>
     <div class="container">
       <h1>AI Agent Freelancers</h1>
-      <p>Find or offer specialized AI Agent development services. Pay a one-time €10 fee to list your services.</p>
+      <!-- Pôvodný text o 200 € poplatku je odstránený -->
+      <p>Find or offer specialized AI Agent development services.</p>
       <a href="#list-your-profile" class="cta-button">List Your Profile</a>
     </div>
   </header>
@@ -212,58 +225,52 @@
     <section id="freelancers" class="freelancers-section">
       <h2 class="section-title">Our Freelancers</h2>
       <div class="freelancer-list">
-        
         <!-- Freelancer Card #1 -->
         <div class="freelancer-card">
           <h3>John Doe</h3>
           <p>Expert in GPT-based AI agents. Has built over 50 successful chatbots for diverse industries.</p>
-          <a href="mailto:john.doe@example.com" class="contact-btn">Contact John</a>
+          <!-- Namiesto mailto linku dáme príklad Fiverr link, len text "Contact" -->
+          <a href="https://www.fiverr.com/johndoe/sample-gig" class="contact-btn" target="_blank">Contact</a>
         </div>
 
         <!-- Freelancer Card #2 -->
         <div class="freelancer-card">
           <h3>Jane Smith</h3>
           <p>Specializes in autonomous agent workflows with 3+ years experience in AI and automation tools.</p>
-          <a href="mailto:jane.smith@example.com" class="contact-btn">Contact Jane</a>
+          <a href="https://www.fiverr.com/janesmith/sample-gig" class="contact-btn" target="_blank">Contact</a>
         </div>
 
         <!-- Freelancer Card #3 (dummy example) -->
         <div class="freelancer-card">
           <h3>Max Miller</h3>
           <p>Focuses on AI agent integration with APIs for e-commerce and fintech solutions.</p>
-          <a href="mailto:max.miller@example.com" class="contact-btn">Contact Max</a>
+          <a href="https://www.fiverr.com/maxmiller/sample-gig" class="contact-btn" target="_blank">Contact</a>
         </div>
-
       </div>
     </section>
 
-    <!-- List Your Profile / Payment Section -->
+    <!-- List Your Profile / Payment Section with Form -->
     <section id="list-your-profile" class="listing-section">
       <h2>List Your AI Agent Service</h2>
       <p class="pay-description">
-        To have your profile featured on our page, please fill in your contact info and pay a one-time fee of €10.
-        We will take a 10% commission on any sales made through this platform.
+        Fill out your contact information and pay a one-time €200 fee to have your profile featured permanently on our AI Agent Freelancers page.
       </p>
-      <!-- Freelancer Info Form -->
+
+      <!-- Freelancer Data Form -->
       <form id="listingForm">
-        <div class="form-group">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" placeholder="Your full name" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="Your email address" required>
-        </div>
-        <!-- Fiverr Account Link Field -->
-        <div class="form-group">
-          <label for="fiverr">Fiverr Account Link</label>
-          <input type="url" id="fiverr" name="fiverr" placeholder="Your Fiverr profile link" required>
-        </div>
-        <div class="form-group">
-          <label for="description">Short Description</label>
-          <textarea id="description" name="description" rows="4" placeholder="Briefly describe your expertise" required></textarea>
-        </div>
-        <button type="submit" class="submit-btn">Submit Info &amp; Pay €10</button>
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="fiverLink">Fiverr Gig Link:</label>
+        <input type="url" id="fiverLink" name="fiverLink" placeholder="https://www.fiverr.com/yourusername/your-gig-link" required>
+
+        <label for="description">Short Description of Your Services:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+        <button type="submit">Submit &amp; Pay €200</button>
       </form>
     </section>
 
@@ -272,46 +279,39 @@
   <!-- ========== FOOTER ========== -->
   <footer>
     <div class="container">
-      Powered by AI Agent Freelancers
+      Powered by AI Agent Freelancers &mdash; One-time fee: €200.
     </div>
   </footer>
 
   <!-- ========== JAVASCRIPT FOR FORM SUBMISSION ========== -->
   <script>
-    // Replace YOUR_FORMSPREE_ENDPOINT with your actual Formspree endpoint.
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT';
-
-    document.getElementById('listingForm').addEventListener('submit', function(e) {
-      e.preventDefault(); // Prevent default form submission
-
-      const formData = new FormData(this);
-
-      fetch(FORMSPREE_ENDPOINT, {
+    const form = document.getElementById('listingForm');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Zabraňujeme klasickému odoslaniu formulára
+      
+      const formData = new FormData(form);
+      
+      // Odoslanie údajov cez Formspree – nahraď YOUR_FORMSPREE_ENDPOINT svojím endpointom
+      fetch('https://formspree.io/f/mjkyvqye', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
         body: formData
       })
       .then(response => {
         if (response.ok) {
-          // On successful submission, redirect to PayPal checkout
-          const paypalURL = "https://www.paypal.com/cgi-bin/webscr" +
-            "?cmd=_xclick" +
-            "&business=YOUR-PAYPAL-EMAIL@example.com" +
-            "&item_name=AI+Agent+Freelancer+Listing+Fee" +
-            "&amount=10.00" +
-            "&currency_code=EUR" +
-            "&return=https://yourdomain.com/success.html" +
-            "&cancel_return=https://yourdomain.com/cancel.html";
-          window.location.href = paypalURL;
+          // Po úspešnom odoslaní údajov sa presmerujeme na PayPal.me link pre 200 €
+          const paypalMeURL = "https://paypal.me/SwiftSceneStudios/200?country.x=SK&locale.x=sk_SK";
+          window.location.href = paypalMeURL;
         } else {
-          alert('There was an error sending your information. Please try again.');
+          alert('Error sending form data. Please try again.');
         }
       })
       .catch(error => {
         console.error('Error:', error);
-        alert('An error occurred. Please try again.');
+        alert('There was an error submitting the form.');
       });
     });
   </script>
+
 </body>
 </html>
