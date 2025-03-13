@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Agent Freelancers</title>
+  <!-- Google font: Roboto (free to use) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============ Global Styles ============ */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: "Roboto", sans-serif;
+      color: #333;
+      background: #f6f9fc;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Container for general content width */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* ============ Header / Hero Section ============ */
+    header {
+      background: linear-gradient(120deg, #2e82ff, #645bff);
+      color: #fff;
+      padding: 2rem 0;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    header h1 {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-size: 2.5rem;
+    }
+    header p {
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0.5rem auto;
+      line-height: 1.6;
+    }
+    .cta-button {
+      display: inline-block;
+      background: #fff;
+      color: #2e82ff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+      margin-top: 1rem;
+      transition: 0.2s ease;
+    }
+    .cta-button:hover {
+      background: #dce8fa;
+    }
+
+    /* ============ Section Titles ============ */
+    h2.section-title {
+      font-weight: 700;
+      margin: 2rem 0 1rem;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+
+    /* ============ Freelancers Section ============ */
+    .freelancers-section {
+      margin-bottom: 2rem;
+    }
+    .freelancer-list {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    }
+    .freelancer-card {
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .freelancer-card h3 {
+      font-weight: 500;
+      margin: 0 0 0.5rem;
+    }
+    .freelancer-card p {
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      margin: 0 0 1rem;
+    }
+    .contact-btn {
+      padding: 0.6rem 1rem;
+      background: #2e82ff;
+      color: #fff;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      text-align: center;
+      transition: 0.2s ease;
+    }
+    .contact-btn:hover {
+      background: #1b5fcc;
+    }
+
+    /* ============ Listing / Pay Section ============ */
+    .listing-section {
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .listing-section h2 {
+      margin-bottom: 1rem;
+      text-align: center;
+      font-weight: 500;
+    }
+    .pay-description {
+      text-align: center;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .paypal-btn-container {
+      text-align: center;
+    }
+    .paypal-btn-container input[type="submit"] {
+      background: #ffc439;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: 0.2s ease;
+    }
+    .paypal-btn-container input[type="submit"]:hover {
+      background: #ffb600;
+    }
+
+    /* ============ Footer ============ */
+    footer {
+      background: #fff;
+      padding: 1rem 0;
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER / HERO SECTION ========== -->
+  <header>
+    <div class="container">
+      <h1>AI Agent Freelancers</h1>
+      <p>Find or offer specialized AI Agent development services. Pay a one-time €10 fee to list your services.</p>
+      <a href="#list-your-profile" class="cta-button">List Your Profile</a>
+    </div>
+  </header>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main class="container">
+
+    <!-- CTA Section: For Clients who want to hire a developer -->
+    <section>
+      <h2 class="section-title">Hire an AI Agent Developer</h2>
+      <p style="text-align:center; max-width:600px; margin:0 auto 2rem;">
+        Browse through our freelancers and contact them directly to discuss your project needs.
+      </p>
+      <a href="#freelancers" class="cta-button" style="display:block; width:max-content; margin:0 auto;">
+        See Our Freelancers
+      </a>
+    </section>
+
+    <!-- Freelancers Section -->
+    <section id="freelancers" class="freelancers-section">
+      <h2 class="section-title">Our Freelancers</h2>
+      <div class="freelancer-list">
+        
+        <!-- Freelancer Card #1 -->
+        <div class="freelancer-card">
+          <h3>John Doe</h3>
+          <p>Expert in GPT-based AI agents. Has built over 50 successful chatbots for diverse industries.</p>
+          <a href="mailto:john.doe@example.com" class="contact-btn">Contact John</a>
+        </div>
+
+        <!-- Freelancer Card #2 -->
+        <div class="freelancer-card">
+          <h3>Jane Smith</h3>
+          <p>Specializes in autonomous agent workflows with 3+ years experience in AI and automation tools.</p>
+          <a href="mailto:jane.smith@example.com" class="contact-btn">Contact Jane</a>
+        </div>
+
+        <!-- Freelancer Card #3 (dummy example) -->
+        <div class="freelancer-card">
+          <h3>Max Miller</h3>
+          <p>Focuses on AI agent integration with APIs for e-commerce and fintech solutions.</p>
+          <a href="mailto:max.miller@example.com" class="contact-btn">Contact Max</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- List Your Profile / Payment Section -->
+    <section id="list-your-profile" class="listing-section">
+      <h2>List Your AI Agent Service</h2>
+      <p class="pay-description">
+        Pay a one-time €10 fee to have your profile featured on our AI Agent Freelancers page.
+        We will only take 10% commission on any sales you make through this platform.
+      </p>
+
+      <div class="paypal-btn-container">
+        <!-- Simple PayPal Buy Now button -->
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+          <!-- Nastavenie PayPal Buy Now -->
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="YOUR-PAYPAL-EMAIL@example.com">
+          <input type="hidden" name="item_name" value="AI Agent Freelancer Listing Fee">
+          <input type="hidden" name="amount" value="10.00">
+          <input type="hidden" name="currency_code" value="EUR">
+          <!-- linka pre návrat -->
+          <input type="hidden" name="return" value="https://yourdomain.com/success.html">
+          <input type="hidden" name="cancel_return" value="https://yourdomain.com/cancel.html">
+
+          <input type="submit" value="Pay €10 with PayPal">
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="container">
+      Powered by AI Agent Freelancers &mdash; One-time fee: €10, plus a 10% commission on sales.
+    </div>
+  </footer>
+
+</body>
+</html>
