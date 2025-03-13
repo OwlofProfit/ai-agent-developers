@@ -131,20 +131,35 @@
       margin-bottom: 1.5rem;
       line-height: 1.5;
     }
-    .paypal-btn-container {
-      text-align: center;
+
+    /* ======== Listing Form Styles ======== */
+    #listingForm {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
-    .paypal-btn-container input[type="submit"] {
-      background: #ffc439;
-      border: none;
-      padding: 0.8rem 1.5rem;
+    #listingForm label {
       font-weight: 500;
-      cursor: pointer;
+    }
+    #listingForm input,
+    #listingForm textarea {
+      padding: 0.8rem;
+      border: 1px solid #ddd;
       border-radius: 4px;
+      font-size: 1rem;
+    }
+    #listingForm button {
+      background: #2e82ff;
+      color: #fff;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
       transition: 0.2s ease;
     }
-    .paypal-btn-container input[type="submit"]:hover {
-      background: #ffb600;
+    #listingForm button:hover {
+      background: #1b5fcc;
     }
 
     /* ============ Footer ============ */
@@ -173,7 +188,8 @@
   <header>
     <div class="container">
       <h1>AI Agent Freelancers</h1>
-      <p>Find or offer specialized AI Agent development services. Pay a one-time €10 fee to list your services.</p>
+      <!-- Pôvodný text o 200 € poplatku je odstránený -->
+      <p>Find or offer specialized AI Agent development services.</p>
       <a href="#list-your-profile" class="cta-button">List Your Profile</a>
     </div>
   </header>
@@ -196,55 +212,53 @@
     <section id="freelancers" class="freelancers-section">
       <h2 class="section-title">Our Freelancers</h2>
       <div class="freelancer-list">
-        
         <!-- Freelancer Card #1 -->
         <div class="freelancer-card">
           <h3>John Doe</h3>
           <p>Expert in GPT-based AI agents. Has built over 50 successful chatbots for diverse industries.</p>
-          <a href="mailto:john.doe@example.com" class="contact-btn">Contact John</a>
+          <!-- Namiesto mailto linku dáme príklad Fiverr link, len text "Contact" -->
+          <a href="https://www.fiverr.com/johndoe/sample-gig" class="contact-btn" target="_blank">Contact</a>
         </div>
 
         <!-- Freelancer Card #2 -->
         <div class="freelancer-card">
           <h3>Jane Smith</h3>
           <p>Specializes in autonomous agent workflows with 3+ years experience in AI and automation tools.</p>
-          <a href="mailto:jane.smith@example.com" class="contact-btn">Contact Jane</a>
+          <a href="https://www.fiverr.com/janesmith/sample-gig" class="contact-btn" target="_blank">Contact</a>
         </div>
 
         <!-- Freelancer Card #3 (dummy example) -->
         <div class="freelancer-card">
           <h3>Max Miller</h3>
           <p>Focuses on AI agent integration with APIs for e-commerce and fintech solutions.</p>
-          <a href="mailto:max.miller@example.com" class="contact-btn">Contact Max</a>
+          <a href="https://www.fiverr.com/maxmiller/sample-gig" class="contact-btn" target="_blank">Contact</a>
         </div>
-
       </div>
     </section>
 
-    <!-- List Your Profile / Payment Section -->
+    <!-- List Your Profile / Payment Section with Form -->
     <section id="list-your-profile" class="listing-section">
       <h2>List Your AI Agent Service</h2>
       <p class="pay-description">
-        Pay a one-time €10 fee to have your profile featured on our AI Agent Freelancers page.
-        We will only take 10% commission on any sales you make through this platform.
+        Fill out your contact information and pay a one-time €200 fee to have your profile featured permanently on our AI Agent Freelancers page.
       </p>
 
-      <div class="paypal-btn-container">
-        <!-- Simple PayPal Buy Now button -->
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <!-- Nastavenie PayPal Buy Now -->
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="business" value="YOUR-PAYPAL-EMAIL@example.com">
-          <input type="hidden" name="item_name" value="AI Agent Freelancer Listing Fee">
-          <input type="hidden" name="amount" value="10.00">
-          <input type="hidden" name="currency_code" value="EUR">
-          <!-- linka pre návrat -->
-          <input type="hidden" name="return" value="https://yourdomain.com/success.html">
-          <input type="hidden" name="cancel_return" value="https://yourdomain.com/cancel.html">
+      <!-- Freelancer Data Form -->
+      <form id="listingForm">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
 
-          <input type="submit" value="Pay €10 with PayPal">
-        </form>
-      </div>
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="fiverLink">Fiverr Gig Link:</label>
+        <input type="url" id="fiverLink" name="fiverLink" placeholder="https://www.fiverr.com/yourusername/your-gig-link" required>
+
+        <label for="description">Short Description of Your Services:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+        <button type="submit">Submit &amp; Pay €200</button>
+      </form>
     </section>
 
   </main>
@@ -252,9 +266,39 @@
   <!-- ========== FOOTER ========== -->
   <footer>
     <div class="container">
-      Powered by AI Agent Freelancers &mdash; One-time fee: €10, plus a 10% commission on sales.
+      Powered by AI Agent Freelancers &mdash; One-time fee: €200.
     </div>
   </footer>
+
+  <!-- ========== JAVASCRIPT FOR FORM SUBMISSION ========== -->
+  <script>
+    const form = document.getElementById('listingForm');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Zabraňujeme klasickému odoslaniu formulára
+      
+      const formData = new FormData(form);
+      
+      // Odoslanie údajov cez Formspree – nahraď YOUR_FORMSPREE_ENDPOINT svojím endpointom
+      fetch('https://formspree.io/f/mjkyvqye', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          // Po úspešnom odoslaní údajov sa presmerujeme na PayPal.me link pre 200 €
+          const paypalMeURL = "https://paypal.me/SwiftSceneStudios/200?country.x=SK&locale.x=sk_SK";
+          window.location.href = paypalMeURL;
+        } else {
+          alert('Error sending form data. Please try again.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('There was an error submitting the form.');
+      });
+    });
+  </script>
 
 </body>
 </html>
