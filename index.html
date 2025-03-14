@@ -66,14 +66,18 @@
       display: inline-block;
       background: #fff;
       color: #2e82ff;
-      padding: 0.8rem 1.5rem;
+      padding: 1rem 2rem;
       border-radius: 4px;
-      font-weight: 500;
-      margin-top: 1rem;
-      transition: 0.2s ease;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
     .cta-button:hover {
-      background: #dce8fa;
+      background: #f0f8ff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0,0,0,0.15);
     }
 
     /* ============ Section Titles ============ */
@@ -95,22 +99,37 @@
     }
     .freelancer-card {
       background: #fff;
-      border-radius: 6px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      text-align: center;
       justify-content: space-between;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    .freelancer-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.15);
     }
     .freelancer-card h3 {
-      font-weight: 500;
-      margin: 0 0 0.5rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
+      color: #1a1a1a;
+      font-size: 1.2rem;
     }
     .freelancer-card p {
-      font-weight: 300;
+      font-weight: 400;
       font-size: 0.95rem;
-      line-height: 1.4;
-      margin: 0 0 1rem;
+      line-height: 1.5;
+      margin: 0 0 1.5rem;
+      color: #444;
+    }
+    .freelancer-card strong {
+      color: #2e82ff;
+      font-size: 1rem;
     }
     .contact-btn {
       padding: 0.6rem 1rem;
@@ -193,6 +212,89 @@
         font-size: 0.9rem;
       }
     }
+
+    /* Nový štýl pre zamknutý obsah */
+    .locked-content {
+      position: relative;
+      filter: blur(5px);
+      pointer-events: none;
+    }
+
+    .locked-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255,255,255,0.95);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+      z-index: 10;
+      padding: 2rem;
+      backdrop-filter: blur(5px);
+    }
+    .locked-overlay h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #1a1a1a;
+    }
+    .locked-overlay p {
+      text-align: center;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .unlock-button {
+      background: linear-gradient(135deg, #2e82ff, #1b5fcc);
+      color: #fff;
+      padding: 1rem 2.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      border: none;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+    .unlock-button:hover {
+      background: linear-gradient(135deg, #1b5fcc, #0f4cb3);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0,0,0,0.25);
+    }
+
+    /* Štýly pre obrázky */
+    .profile-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid #2e82ff;
+    }
+
+    .trust-badges {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .trust-badge img {
+      width: 24px;
+      height: 24px;
+    }
   </style>
 </head>
 <body>
@@ -200,78 +302,68 @@
   <!-- ========== HEADER / HERO SECTION ========== -->
   <header>
     <div class="container">
-      <h1>AI Agent Freelancers</h1>
-      <!-- Pôvodný text o 200 € poplatku je odstránený -->
-      <p>Find or offer specialized AI Agent development services.</p>
-      <a href="#list-your-profile" class="cta-button">List Your Profile</a>
+      <h1>Elite AI Agent Freelancers</h1>
+      <p>Unlock Your Next AI Project's Success!</p>
+      <p style="font-size: 1.1em; margin-top: 1rem; font-weight: 500;">🔥 Special Offer: Only €19 for Lifetime Access</p>
+      <p style="font-size: 0.9em; margin-top: 0.5rem; color: rgba(255,255,255,0.9);">Join 500+ Satisfied Clients Who Found Their Perfect AI Developer</p>
+      <a href="#unlock-content" class="cta-button">Get Instant Access Now ➔</a>
     </div>
   </header>
 
   <!-- ========== MAIN CONTENT ========== -->
   <main class="container">
-
-    <!-- CTA Section: For Clients who want to hire a developer -->
-    <section>
-      <h2 class="section-title">Hire an AI Agent Developer</h2>
-      <p style="text-align:center; max-width:600px; margin:0 auto 2rem;">
-        Browse through our freelancers and contact them directly to discuss your project needs.
-      </p>
-      <a href="#freelancers" class="cta-button" style="display:block; width:max-content; margin:0 auto;">
-        See Our Freelancers
-      </a>
-    </section>
-
-    <!-- Freelancers Section -->
+    <!-- Locked Freelancers Section -->
     <section id="freelancers" class="freelancers-section">
-      <h2 class="section-title">Our Freelancers</h2>
-      <div class="freelancer-list">
-        <!-- Freelancer Card #1 -->
-        <div class="freelancer-card">
-          <h3>John Doe</h3>
-          <p>Expert in GPT-based AI agents. Has built over 50 successful chatbots for diverse industries.</p>
-          <!-- Namiesto mailto linku dáme príklad Fiverr link, len text "Contact" -->
-          <a href="https://www.fiverr.com/johndoe/sample-gig" class="contact-btn" target="_blank">Contact</a>
+      <h2 class="section-title">Top-Rated AI Experts Ready to Help</h2>
+      
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <img src="https://img.icons8.com/color/48/000000/verified-badge.png" alt="Verified">
+          <span>Verified Experts</span>
         </div>
-
-        <!-- Freelancer Card #2 -->
-        <div class="freelancer-card">
-          <h3>Jane Smith</h3>
-          <p>Specializes in autonomous agent workflows with 3+ years experience in AI and automation tools.</p>
-          <a href="https://www.fiverr.com/janesmith/sample-gig" class="contact-btn" target="_blank">Contact</a>
+        <div class="trust-badge">
+          <img src="https://img.icons8.com/color/48/000000/guarantee.png" alt="Guaranteed">
+          <span>Money-back Guarantee</span>
         </div>
-
-        <!-- Freelancer Card #3 (dummy example) -->
-        <div class="freelancer-card">
-          <h3>Max Miller</h3>
-          <p>Focuses on AI agent integration with APIs for e-commerce and fintech solutions.</p>
-          <a href="https://www.fiverr.com/maxmiller/sample-gig" class="contact-btn" target="_blank">Contact</a>
+        <div class="trust-badge">
+          <img src="https://img.icons8.com/color/48/000000/security-checked.png" alt="Secure">
+          <span>Secure Payment</span>
         </div>
       </div>
-    </section>
 
-    <!-- List Your Profile / Payment Section with Form -->
-    <section id="list-your-profile" class="listing-section">
-      <h2>List Your AI Agent Service</h2>
-      <p class="pay-description">
-        Fill out your contact information and pay a one-time €200 fee to have your profile featured permanently on our AI Agent Freelancers page.
-      </p>
+      <div class="freelancer-list locked-content">
+        <div class="locked-overlay">
+          <h3>Premium Contacts Locked 🔒</h3>
+          <p>Don't Miss Out! Unlock All Expert Contacts Now</p>
+          <p style="font-size: 0.9em; margin: 0.5rem 0; color: #666;">✓ Verified Profiles &nbsp; ✓ Direct Contacts &nbsp; ✓ Instant Access</p>
+          <button class="unlock-button" onclick="unlockContent()">Unlock Now for €19 ➔</button>
+        </div>
+        
+        <!-- Freelancer Cards (locked) -->
+        <div class="freelancer-card">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe" class="profile-image">
+          <h3>John Doe 🏆</h3>
+          <p><strong>GPT & AI Expert</strong><br>
+          Created 50+ successful chatbots generating $2M+ in revenue. Trusted by Fortune 500 companies.</p>
+          <a href="#" class="contact-btn">View Contact ➔</a>
+        </div>
 
-      <!-- Freelancer Data Form -->
-      <form id="listingForm">
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" name="name" required>
+        <div class="freelancer-card">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jane Smith" class="profile-image">
+          <h3>Jane Smith ⭐</h3>
+          <p><strong>AI Automation Specialist</strong><br>
+          3+ years crafting intelligent workflows. Saved clients 1000+ work hours through AI automation.</p>
+          <a href="#" class="contact-btn">View Contact ➔</a>
+        </div>
 
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="fiverLink">Fiverr Gig Link:</label>
-        <input type="url" id="fiverLink" name="fiverLink" placeholder="https://www.fiverr.com/yourusername/your-gig-link" required>
-
-        <label for="description">Short Description of Your Services:</label>
-        <textarea id="description" name="description" rows="4" required></textarea>
-
-        <button type="submit">Submit &amp; Pay €200</button>
-      </form>
+        <div class="freelancer-card">
+          <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Max Miller" class="profile-image">
+          <h3>Max Miller 💡</h3>
+          <p><strong>AI Integration Expert</strong><br>
+          Seamless API integrations for e-commerce & fintech. 100+ successful projects delivered.</p>
+          <a href="#" class="contact-btn">View Contact ➔</a>
+        </div>
+      </div>
     </section>
 
   </main>
@@ -279,39 +371,36 @@
   <!-- ========== FOOTER ========== -->
   <footer>
     <div class="container">
-      Powered by AI Agent Freelancers &mdash; One-time fee: €200.
+      <p style="margin-bottom: 0.5rem;">Ready to Transform Your Business with AI?</p>
+      <p style="color: #2e82ff; font-weight: 500; font-size: 1.1em;">Unlock All Contacts Now - Just €19</p>
     </div>
   </footer>
 
-  <!-- ========== JAVASCRIPT FOR FORM SUBMISSION ========== -->
+  <!-- ========== JAVASCRIPT ========== -->
   <script>
-    const form = document.getElementById('listingForm');
-    form.addEventListener('submit', function(e) {
-      e.preventDefault(); // Zabraňujeme klasickému odoslaniu formulára
+    function unlockContent() {
+      // Presmerovanie na PayPal.me pre platbu
+      window.location.href = "https://paypal.me/SwiftSceneStudios/19?country.x=SK&locale.x=sk_SK";
       
-      const formData = new FormData(form);
-      
-      // Odoslanie údajov cez Formspree – nahraď YOUR_FORMSPREE_ENDPOINT svojím endpointom
-      fetch('https://formspree.io/f/mjkyvqye', {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: formData
-      })
-      .then(response => {
-        if (response.ok) {
-          // Po úspešnom odoslaní údajov sa presmerujeme na PayPal.me link pre 200 €
-          const paypalMeURL = "https://paypal.me/SwiftSceneStudios/200?country.x=SK&locale.x=sk_SK";
-          window.location.href = paypalMeURL;
-        } else {
-          alert('Error sending form data. Please try again.');
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert('There was an error submitting the form.');
-      });
+      // Tu by normálne bola logika na overenie platby a odomknutie obsahu
+      // Pre demo účely len presmerujeme na PayPal
+    }
+
+    // Kontrola, či je používateľ prihlásený/zaplatil (demo verzia)
+    function checkAccess() {
+      // Tu by bola skutočná logika na kontrolu prístupu
+      // Pre demo účely vždy zobrazíme zamknutý obsah
+      return false;
+    }
+
+    // Inicializácia pri načítaní stránky
+    document.addEventListener('DOMContentLoaded', function() {
+      if (checkAccess()) {
+        document.querySelector('.locked-content').classList.remove('locked-content');
+        document.querySelector('.locked-overlay').style.display = 'none';
+      }
     });
   </script>
 
 </body>
-</html>
+</html> 
