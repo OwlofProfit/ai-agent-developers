@@ -213,14 +213,17 @@
       }
     }
 
-    /* Nový štýl pre zamknutý obsah */
-    .locked-content {
+    /* Content Locking System */
+    .content-container {
       position: relative;
+    }
+
+    .blurred-content {
       filter: blur(5px);
       pointer-events: none;
     }
 
-    .locked-overlay {
+    .content-overlay {
       position: absolute;
       top: 0;
       left: 0;
@@ -231,39 +234,55 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      pointer-events: auto;
       z-index: 10;
       padding: 2rem;
-      backdrop-filter: blur(5px);
-    }
-    .locked-overlay h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #1a1a1a;
-    }
-    .locked-overlay p {
-      text-align: center;
-      max-width: 400px;
-      margin: 0 auto;
     }
 
-    .unlock-button {
-      background: linear-gradient(135deg, #2e82ff, #1b5fcc);
-      color: #fff;
-      padding: 1rem 2.5rem;
-      border-radius: 6px;
-      font-weight: 600;
-      margin-top: 1.5rem;
-      cursor: pointer;
-      border: none;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    /* Registration and Payment Container */
+    .auth-container {
+      display: none;
+      margin-top: 2rem;
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    .unlock-button:hover {
-      background: linear-gradient(135deg, #1b5fcc, #0f4cb3);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 8px rgba(0,0,0,0.25);
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .auth-btn {
+      width: 100%;
+      background: #2e82ff;
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .auth-btn:hover {
+      background: #1b5fcc;
     }
 
     /* Štýly pre obrázky */
@@ -306,14 +325,40 @@
       <p>Unlock Your Next AI Project's Success!</p>
       <p style="font-size: 1.1em; margin-top: 1rem; font-weight: 500;">🔥 Special Offer: Only €19 for Lifetime Access</p>
       <p style="font-size: 0.9em; margin-top: 0.5rem; color: rgba(255,255,255,0.9);">Join 500+ Satisfied Clients Who Found Their Perfect AI Developer</p>
-      <a href="#unlock-content" class="cta-button">Get Instant Access Now ➔</a>
+      <button onclick="unlockContent()" class="cta-button">Get Instant Access Now ➔</button>
+      
+      <!-- Registration and Payment Container -->
+      <div id="authContainer" class="auth-container">
+        <!-- Registration Form -->
+        <div id="registrationForm">
+          <h2 style="color: #333; margin-bottom: 1.5rem;">Register to Continue</h2>
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+          </div>
+          <button class="auth-btn" onclick="handleRegistration()">Register & Continue to Payment</button>
+        </div>
+
+        <!-- PayPal Container -->
+        <div id="paypalContainer" style="display: none;">
+          <h2 style="color: #333; margin-bottom: 1.5rem;">Complete Your Payment</h2>
+          <div id="paypal-button-container"></div>
+        </div>
+      </div>
     </div>
   </header>
 
   <!-- ========== MAIN CONTENT ========== -->
   <main class="container">
-    <!-- Locked Freelancers Section -->
-    <section id="freelancers" class="freelancers-section">
+    <section id="freelancers" class="freelancers-section content-container">
       <h2 class="section-title">Top-Rated AI Experts Ready to Help</h2>
       
       <div class="trust-badges">
@@ -331,13 +376,9 @@
         </div>
       </div>
 
-      <div class="freelancer-list locked-content">
-        <div class="locked-overlay">
-          <h3>Premium Contacts Locked 🔒</h3>
-          <p>Don't Miss Out! Unlock All Expert Contacts Now</p>
-          <p style="font-size: 0.9em; margin: 0.5rem 0; color: #666;">✓ Verified Profiles &nbsp; ✓ Direct Contacts &nbsp; ✓ Instant Access</p>
-          <button class="unlock-button" onclick="unlockContent()">Unlock Now for €19 ➔</button>
-        </div>
+      <div class="freelancer-list blurred-content">
+        <!-- PayPal container moved outside blurred-content -->
+        <div id="paypal-button-container" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); width: 100%; max-width: 300px;"></div>
         
         <!-- Freelancer Cards (locked) -->
         <div class="freelancer-card">
@@ -364,8 +405,14 @@
           <a href="#" class="contact-btn">View Contact ➔</a>
         </div>
       </div>
-    </section>
 
+      <!-- Content Overlay -->
+      <div class="content-overlay">
+        <h3>Premium Contacts Locked 🔒</h3>
+        <p>Don't Miss Out! Unlock All Expert Contacts Now</p>
+        <p style="font-size: 0.9em; margin: 0.5rem 0; color: #666;">✓ Verified Profiles &nbsp; ✓ Direct Contacts &nbsp; ✓ Instant Access</p>
+      </div>
+    </section>
   </main>
 
   <!-- ========== FOOTER ========== -->
@@ -376,28 +423,77 @@
     </div>
   </footer>
 
-  <!-- ========== JAVASCRIPT ========== -->
+  <!-- PayPal Script -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AXpLr3Qjl4rq3UfzBEo37jdtTQieoiYMRbMP1WLbeUQRRV16HMQu7iZXCaveXQq76Vjzcg6EUXZG6PaC&currency=EUR"></script>
+
   <script>
     function unlockContent() {
-      // Presmerovanie na PayPal.me pre platbu
-      window.location.href = "https://paypal.me/SwiftSceneStudios/19?country.x=SK&locale.x=sk_SK";
-      
-      // Tu by normálne bola logika na overenie platby a odomknutie obsahu
-      // Pre demo účely len presmerujeme na PayPal
+      document.getElementById('authContainer').style.display = 'block';
+      document.querySelector('.cta-button').style.display = 'none';
     }
 
-    // Kontrola, či je používateľ prihlásený/zaplatil (demo verzia)
-    function checkAccess() {
-      // Tu by bola skutočná logika na kontrolu prístupu
-      // Pre demo účely vždy zobrazíme zamknutý obsah
-      return false;
+    function handleRegistration() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      if (!name || !email || !password) {
+        alert('Please fill in all fields');
+        return;
+      }
+
+      // Store user data
+      localStorage.setItem('user', JSON.stringify({
+        name,
+        email,
+        password: btoa(password)
+      }));
+
+      // Hide registration and show PayPal
+      document.getElementById('registrationForm').style.display = 'none';
+      document.getElementById('paypalContainer').style.display = 'block';
+      initiatePayPalPayment();
     }
 
-    // Inicializácia pri načítaní stránky
+    function initiatePayPalPayment() {
+      paypal.Buttons({
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: '19.00',
+                currency_code: 'EUR'
+              },
+              description: 'Lifetime Access to AI Agent Freelancers'
+            }]
+          });
+        },
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+            localStorage.setItem('hasPaid', 'true');
+            alert('Platba bola úspešná! Ďakujeme ' + details.payer.name.given_name);
+            
+            // Unlock content
+            document.querySelector('.blurred-content').classList.remove('blurred-content');
+            document.querySelector('.content-overlay').style.display = 'none';
+            document.getElementById('authContainer').style.display = 'none';
+          });
+        },
+        onError: function(err) {
+          alert('Pri spracovaní platby nastala chyba');
+          console.error(err);
+        }
+      }).render('#paypal-button-container');
+    }
+
+    // Check if user is already registered and paid
     document.addEventListener('DOMContentLoaded', function() {
-      if (checkAccess()) {
-        document.querySelector('.locked-content').classList.remove('locked-content');
-        document.querySelector('.locked-overlay').style.display = 'none';
+      const user = localStorage.getItem('user');
+      const hasPaid = localStorage.getItem('hasPaid');
+      
+      if (user && hasPaid) {
+        document.querySelector('.blurred-content').classList.remove('blurred-content');
+        document.querySelector('.content-overlay').style.display = 'none';
       }
     });
   </script>
